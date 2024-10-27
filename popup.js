@@ -5,7 +5,7 @@ document.getElementById("viewSummary").addEventListener("click", function () {
             let date = new Date(search.date).toDateString();
             if (!acc[date]) acc[date] = [];
             acc[date].push(search.term);
-            return.acc;
+            return acc;
         }, {});
         
         let summaryDiv = document.getElementById("summary");
