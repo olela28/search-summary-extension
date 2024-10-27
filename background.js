@@ -5,7 +5,7 @@ chrome.history.onVisited.addListener(function (result) {
             chrome.storage.local.get(["searchData"], function (data) {
                 let searchData = data.searchData || [];
                 searchData.push({ term: searchTerm, date: new Date().toISOString() });
-                chrome.local.storage.set({ searchData: searchData });
+                chrome.storage.local.set({ searchData: searchData });
             });
         }
     }
