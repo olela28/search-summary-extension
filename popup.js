@@ -25,4 +25,12 @@ document.getElementById("clearSummary").addEventListener("click", function () {
 
 document.getElementById("themeToggle").addEventListener("click", function () {
     document.body.classList.toggle("dark-mode");
+    let isDarkMode = document.body.classList.contains("dark-mode");
+    chrome.storage.local.set({theme: isDarkMode ? "dark" : "light" });
+});
+
+chrome.storage.local.get(["theme"], function (data) {
+    if (data.theme === "dark") {
+        document.body.classList.add("dark-mode");
+    }
 });
