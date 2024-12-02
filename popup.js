@@ -18,9 +18,33 @@ document.getElementById("viewSummary").addEventListener("click", function () {
         if (Object.keys(searches).length === 0) {
             summaryDiv.innerHTML = "<p>No search data available.</p>";
         } else {
+            let table = document.createElement("table");
+            table.style.width = "100%";
+            table.style.borderCollapse = "collapse";
+
+            // Add table header
+            let thead = document.createElement("thead");
+            thead.innerHTML = `
+                <tr>
+                    <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Date</th>
+                    <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Search Terms</th>
+                </tr>
+            `;
+            table.appendChild(thead);
+
+            // Add table body
+            let tbody = document.createElement("tbody");
             for (let date in searches) {
-                summaryDiv.innerHTML += `<strong>${date}</strong>: ${searches[date].join(", ")}<br/>`;
+                let row = document.createElement("tr");
+                row.innerHTML = `
+                    <td style="border: 1px solid #ddd; padding: 8px;">${date}</td>
+                    <td style="border: 1px solid #ddd; padding: 8px;">${searches[date].join(", ")}</td>
+                `;
+                tbody.appendChild(row);
             }
+            table.appendChild(tbody);
+
+            summaryDiv.appendChild(table);
         }
     });
 });
