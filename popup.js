@@ -15,8 +15,9 @@ document.getElementById("viewSummary").addEventListener("click", function () {
         }
     });
 });
-document.getElementByID("clearSummary").addEventListener("click", function () {
+document.getElementById("clearSummary").addEventListener("click", function () {
     chrome.storage.sync.remove("searchData", function () {
-        document.getElementByID("summary").innerHTML = "<p>Data Cleared!</p>";
+        let summaryDiv = document.getElementById("summary");
+        summaryDiv.innnerHTML = "<p>Data Cleared!</p>";
     });
 });
