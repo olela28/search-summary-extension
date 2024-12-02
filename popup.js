@@ -1,5 +1,5 @@
 document.getElementById("viewSummary").addEventListener("click", function () {
-    chrome.storage.local.get(["searchData"], function (data) {
+    chrome.storage.sync.get(["searchData"], function (data) {
         let summary = data.searchData || [];
         let searches = summary.reduce((acc, search) => {
             let date = new Date(search.date).toDateString();
@@ -13,5 +13,12 @@ document.getElementById("viewSummary").addEventListener("click", function () {
         for (let date in searches) {
             summaryDiv.innerHTML += `<strong>${date}</strong>: ${searches[date].join(", ")}<br/>`;
         }
+    });
+});
+
+document.getElementById("clearSummary").addEventListener("click", function () {
+    chrome.storage.sync.remove("searchData", function () {
+        let summaryDiv = document.getElementById("summary");
+        summaryDiv.innerHTML = "<p>Data Cleared!</p>";
     });
 });
