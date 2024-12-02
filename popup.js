@@ -22,3 +22,7 @@ document.getElementById("clearSummary").addEventListener("click", function () {
         summaryDiv.innerHTML = "<p>Data Cleared!</p>";
     });
 });
+
+document.getElementById("themeToggle").addEventListener("click", function () {
+    document.body.classList.toggle("dark-mode");
+});
