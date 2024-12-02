@@ -15,9 +15,3 @@ document.getElementById("viewSummary").addEventListener("click", function () {
         }
     });
 });
-document.getElementById("clearSummary").addEventListener("click", function () {
-    chrome.storage.sync.remove("searchData", function () {
-        let summaryDiv = document.getElementById("summary");
-        summaryDiv.innnerHTML = "<p>Data Cleared!</p>";
-    });
-});
